@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Home.qml</file>
-    </qresource>
-    <qresource prefix="/imgs">
-        <file>background.jpg</file>
-        <file>logo.png</file>
-    </qresource>
-</RCC>

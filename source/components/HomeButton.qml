@@ -11,13 +11,13 @@ Item {
 
     FontLoader {
         id: iconFont
-        source: "qrc:/Simple-Line-Icons.ttf"
+        source: "qrc:/fonts/Simple-Line-Icons.ttf"
 
     }
 
     FontLoader {
         id: textFont
-        source: "qrc:/Sunflower-Light.ttf"
+        source: "qrc:/fonts/Sunflower-Light.ttf"
         name: "Sunflower"
     }
 

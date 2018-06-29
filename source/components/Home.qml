@@ -2,19 +2,23 @@ import QtQuick 2.9
 
 Item {
     anchors.fill: parent
+    Keys.onPressed: {
+        if (event.key === Qt.Key_Return) {
+            console.log('return pressed')
+        }
 
-    Image {
-        anchors.fill: parent
-        source: "qrc:/background.jpg"
+       console.log(this.highlightItem)
+    }
+
+
 
         Image {
-            source: "qrc:/logo.png"
+            source: "qrc:/images/logo.png"
             anchors.horizontalCenter: parent.horizontalCenter
             width: 600
             y: 60
             fillMode: Image.PreserveAspectFit
         }
-    }
 
 
 
@@ -42,7 +46,7 @@ Item {
         spacing: 100
 
         width: 5 * 300 - 100
-        focus: true
+//        focus: true
 
         anchors {
             horizontalCenter: parent.horizontalCenter
@@ -58,13 +62,7 @@ Item {
         highlight: Rectangle { color: "#30FFFFFF"; radius: 20 }
         highlightMoveDuration: 400
 
-        Keys.onPressed: {
-            if (event.key === Qt.Key_Return) {
-                console.log('return pressed')
-            }
 
-           console.log(this.highlightItem)
-        }
 
     }
 
