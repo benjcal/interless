@@ -1,30 +1,47 @@
 import QtQuick 2.9
 
-Item {
-    anchors.fill: parent
-    Keys.onPressed: {
-        if (event.key === Qt.Key_Return) {
-            console.log('return pressed')
-        }
+// Sample for double list with changeable focus!
+FocusScope {
+    objectName: "Home"
+    property alias currButtonName: buttons.currentItem
 
-       console.log(this.highlightItem)
+    // --START Logo
+    Image {
+        source: "qrc:/images/logo.png"
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: 400
+        y: 60
+        fillMode: Image.PreserveAspectFit
     }
+    // --END Logo
 
+    // --Start Icons
+    ListView {
+        id: buttons
+        focus: true
 
-
-        Image {
-            source: "qrc:/images/logo.png"
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 600
-            y: 60
-            fillMode: Image.PreserveAspectFit
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+            bottomMargin: 300
         }
+        width: 5 * 300 - 100
+        spacing: 100
 
 
+        orientation: ListView.Horizontal
+        model: iconList
+        delegate: homeButton
 
+        keyNavigationEnabled: true
+
+        highlight: Rectangle { color: "#30FFFFFF"; radius: 20 }
+        highlightMoveDuration: 400
+    }
+    // --END Icons
 
     ListModel {
-        id: homeButtonsList
+        id: iconList
         ListElement { iconCode: "\ue011"; iconName: "Channels" }
         ListElement { iconCode: "\ue067"; iconName: "Playlists" }
         ListElement { iconCode: "\ue619"; iconName: "Schedule" }
@@ -32,38 +49,49 @@ Item {
         ListElement { iconCode: "\ue05d"; iconName: "Help" }
     }
 
+
     Component {
-        id: myDelegate
-        HomeButton {
-            icon: iconCode
-            name: iconName
+        id: homeButton
+
+        Item {
+            width: 200
+            height: 200
+
+            Column {
+                anchors.centerIn: parent
+                spacing: 20
+
+                Text {
+                    font.family: iconFont.name
+                    font.pixelSize: 80
+                    color: "white"
+
+                    text: iconCode
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    id: aabc
+                    font.family: textFont.name
+                    font.pixelSize: 24
+                    color: "white"
+
+                    text: iconName
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
         }
     }
 
-
-    ListView {
-        id: list1
-        spacing: 100
-
-        width: 5 * 300 - 100
-//        focus: true
-
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom
-            bottomMargin: 300
-        }
-
-        orientation: ListView.Horizontal
-        model: homeButtonsList
-        delegate: myDelegate
-
-        keyNavigationEnabled: true
-        highlight: Rectangle { color: "#30FFFFFF"; radius: 20 }
-        highlightMoveDuration: 400
-
-
-
+    // --START Fonts
+    FontLoader {
+        id: iconFont
+        source: "qrc:/fonts/Simple-Line-Icons.ttf"
     }
+    FontLoader {
+        id: textFont
+        source: "qrc:/fonts/Sunflower-Light.ttf"
+    }
+    // --END Fonts
 
 }

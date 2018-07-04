@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file alias="Home.qml">components/Home.qml</file>
-        <file alias="HomeButton.qml">components/HomeButton.qml</file>
         <file>fonts/Simple-Line-Icons.ttf</file>
         <file>fonts/Sunflower-Bold.ttf</file>
         <file>fonts/Sunflower-Light.ttf</file>
         <file>fonts/Sunflower-Medium.ttf</file>
         <file>images/background.jpg</file>
         <file>images/logo.png</file>
+        <file alias="Home.qml">components/Home.qml</file>
+        <file>components/dualList.qml</file>
     </qresource>
 </RCC>

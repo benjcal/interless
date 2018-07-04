@@ -9,96 +9,39 @@ Window {
     height: 1080
     title: "Interless"
 
-    // START StackView
+    // --START StackView
     StackView {
         id: mainStack
-        initialItem: view1
+        initialItem: "qrc:/Home.qml"
         focus: true
         anchors.fill: parent
 
-        // START Background Image
+        // --START Background Image
         Image {
             anchors.fill: parent
             source: "qrc:/images/background.jpg"
         }
-        // END Background Image
+        // --END Background Image
 
+        // --START Handle keys
         Keys.onPressed: {
-            handleKeys(event, mainStack)
-        }
-
-        function handleKeys(e, stack) {
-            if (e.key === Qt.Key_1) {
-                stack.push(view1)
+            /****** Listen here globaly for home key or back and modify the stack accordingly ******/
+            if (event.key === Qt.Key_Backspace) {
+                // Handle here going up in the stack
+                console.log("go back")
             }
-            if (e.key === Qt.Key_2) {
-                stack.push(view2)
+            if (event.key === Qt.Key_Home) {
+                // handle here going to the home screen
+                console.log("go home")
             }
-            if (e.key === Qt.Key_3) {
-                stack.push(view3)
-            }
-            if (e.key === Qt.Key_Backspace) {
-                stack.pop()
-            }
-            if (e.key === Qt.Key_Q) {
-                Qt.quit()
-            }
-        }
-    }
-    // END StartView
-
-
-    Component {
-        id: view2
-        Home {
-        }
-    }
-
-
-    Component {
-        id: view1
-        // START ListView
-        ListView {
-            anchors.fill: parent
-            model: model1
-            delegate: Text {
-                text: iconCode + ": " + iconName
-            }
-            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
-            Keys.onPressed: {
-                if (event.key === Qt.Key_1) {
-                    mainStack.push(view2)
+            if (event.key === Qt.Key_Return) {
+                if (mainStack.currentItem.objectName === "Home") {
+                    var currButtonName = mainStack.currentItem.currButtonName.children[0].children[1].text;
+                 console.log(currButtonName)
                 }
-                if (event.key === Qt.Key_2) {
-                    mainStack.push(view3)
-                }
-
             }
-
         }
-        // END ListView
+        // --START Handle keys
     }
-
-
-
-    Component {
-        id: view3
-        Rectangle {
-            color: "red"
-            anchors.fill: parent
-        }
-    }
-
-
-
-
-    ListModel {
-        id: model1
-        ListElement { iconCode: "\ue011"; iconName: "Channels" }
-        ListElement { iconCode: "\ue067"; iconName: "Playlists" }
-        ListElement { iconCode: "\ue619"; iconName: "Schedule" }
-        ListElement { iconCode: "\ue06e"; iconName: "Preference" }
-        ListElement { iconCode: "\ue05d"; iconName: "Help" }
-    }
-
+    // --END StartView
 }
