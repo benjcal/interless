@@ -9,5 +9,7 @@
         <file>images/logo.png</file>
         <file alias="Home.qml">components/Home.qml</file>
         <file>components/dualList.qml</file>
+        <file>js/progList.js</file>
+        <file>components/ListsSample.qml</file>
     </qresource>
 </RCC>

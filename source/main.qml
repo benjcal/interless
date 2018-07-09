@@ -12,7 +12,7 @@ Window {
     // --START StackView
     StackView {
         id: mainStack
-        initialItem: "qrc:/Home.qml"
+        initialItem: "qrc:/components/ListsSample.qml"
         focus: true
         anchors.fill: parent
 
@@ -26,19 +26,28 @@ Window {
         // --START Handle keys
         Keys.onPressed: {
             /****** Listen here globaly for home key or back and modify the stack accordingly ******/
-            if (event.key === Qt.Key_Backspace) {
+            switch (event.key) {
+            case Qt.Key_Backspace:
                 // Handle here going up in the stack
                 console.log("go back")
-            }
-            if (event.key === Qt.Key_Home) {
+                break
+            case Qt.Key_Home:
                 // handle here going to the home screen
                 console.log("go home")
-            }
-            if (event.key === Qt.Key_Return) {
+                break
+
+            case Qt.Key_Return:
                 if (mainStack.currentItem.objectName === "Home") {
                     var currButtonName = mainStack.currentItem.currButtonName.children[0].children[1].text;
                  console.log(currButtonName)
                 }
+                break
+            case Qt.Key_Escape:
+                // handle here going to the home screen
+                Qt.quit()
+                break
+            default:
+                break
             }
         }
         // --START Handle keys
