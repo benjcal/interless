@@ -8,9 +8,17 @@
         <file>images/background.jpg</file>
         <file>images/logo.png</file>
         <file alias="Home.qml">components/Home.qml</file>
-        <file>components/dualList.qml</file>
         <file>js/progList.js</file>
-        <file>components/ListsSample.qml</file>
         <file>js/interlessData.js</file>
+        <file alias="Channels.qml">components/ChannelsSeriesList.qml</file>
+        <file>js/getData.js</file>
+        <file>images/dare.png</file>
+        <file>images/int.png</file>
+        <file>images/kids.png</file>
+        <file>images/lat.png</file>
+        <file>images/main.png</file>
+        <file>images/proc.png</file>
+        <file>images/radio.png</file>
+        <file>js/lib.js</file>
     </qresource>
 </RCC>

@@ -12,7 +12,7 @@ Window {
     // --START StackView
     StackView {
         id: mainStack
-        initialItem: "qrc:/components/ListsSample.qml"
+        initialItem: "qrc:/Home.qml"
         focus: true
         anchors.fill: parent
 
@@ -30,16 +30,21 @@ Window {
             case Qt.Key_Backspace:
                 // Handle here going up in the stack
                 console.log("go back")
+                mainStack.pop()
                 break
             case Qt.Key_Home:
                 // handle here going to the home screen
                 console.log("go home")
+                mainStack.push(home)
                 break
 
             case Qt.Key_Return:
                 if (mainStack.currentItem.objectName === "Home") {
                     var currButtonName = mainStack.currentItem.currButtonName.children[0].children[1].text;
                  console.log(currButtonName)
+                    if (currButtonName === "Channels") {
+                        mainStack.push(channels)
+                    }
                 }
                 break
             case Qt.Key_Escape:
@@ -52,5 +57,16 @@ Window {
         }
         // --START Handle keys
     }
+
+    Component {
+        id: channels
+        Channels {}
+    }
+
+    Component {
+        id: home
+        Home {}
+    }
+
     // --END StartView
 }
