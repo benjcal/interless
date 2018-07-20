@@ -1,4 +1,5 @@
 import QtQuick 2.9
+import "../js/progList.js" as ProgList
 
 // Sample for double list with changeable focus!
 FocusScope {
@@ -39,38 +40,60 @@ FocusScope {
         id: m1
     }
 
-    Component.onCompleted: request()
+    Component.onCompleted: request2()
 
-    function request() {
-        var xhr = new XMLHttpRequest()
+//    function request() {
+//        var xhr = new XMLHttpRequest()
 
-        xhr.onreadystatechange = function() {
+//        xhr.onreadystatechange = function() {
 
-            if(xhr.readyState === XMLHttpRequest.DONE) {
+//            if(xhr.readyState === XMLHttpRequest.DONE) {
 
-                var json = JSON.parse(xhr.responseText.toString())
+//                var json = JSON.parse(xhr.responseText.toString())
 
-                var arr = [1]
+//                var arr = [1]
 
-                Object.keys(json).forEach(function(k) {
+//                Object.keys(json).forEach(function(k) {
 
-                    var name = json[k].series_title
+//                    var name = json[k].series_title
 
-                    if (arr.indexOf(name) < 0) {
-                        arr.push(json[k].series_title)
-                    }
-                })
+//                    if (arr.indexOf(name) < 0) {
+//                        arr.push(json[k].series_title)
+//                    }
+//                })
 
-                arr.sort()
+//                arr.sort()
 
-                arr.forEach(function(e) {
-                    m1.append({name: e})
-                })
-            }
+//                arr.forEach(function(e) {
+//                    m1.append({name: e})
+//                })
+//            }
+//        }
+//        xhr.open("GET", "http://localhost:3000")
+//        xhr.send()
+//    }
+
+        function request2() {
+
+            var x = ProgList.hello()
+
+//            Object.keys().forEach(function(k) {
+
+//                var name = json[k].series_title
+
+//                if (arr.indexOf(name) < 0) {
+//                    arr.push(json[k].series_title)
+//                }
+//            })
+
+
+//                    arr.sort()
+
+//                    arr.forEach(function(e) {
+//                        m1.append({name: e})
+//                    })
+
         }
-        xhr.open("GET", "http://localhost:3000")
-        xhr.send()
-    }
 
 
     ListView {
