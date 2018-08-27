@@ -45,6 +45,11 @@ Window {
                     if (currButtonName === "Channels") {
                         mainStack.push(channels)
                     }
+
+                    if (currButtonName === "Playlists") {
+                        console.log('ss')
+                        mainStack.push(vid)
+                    }
                 }
                 break
             case Qt.Key_Escape:
@@ -66,6 +71,11 @@ Window {
     Component {
         id: home
         Home {}
+    }
+
+    Component {
+        id: vid
+        Vidds {}
     }
 
     // --END StartView

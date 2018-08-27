@@ -20,5 +20,6 @@
         <file>images/proc.png</file>
         <file>images/radio.png</file>
         <file>js/lib.js</file>
+        <file alias="Vidds.qml">components/VideoTest.qml</file>
     </qresource>
 </RCC>
