@@ -1,14 +1,25 @@
 import QtQuick 2.9
 import QtMultimedia 5.9
 
-Video {
-    id: video
-    source: "http://localhost:8000/oceans.mp4"
+Rectangle {
+    width: 1920
+    height: 1080
 
-    anchors.fill: parent
+    color: "black"
 
-    focus: true
-    Keys.onSpacePressed: video.playbackState == MediaPlayer.PlayingState ? video.pause() : video.play()
-    Keys.onLeftPressed: video.seek(video.position - 3000)
-    Keys.onRightPressed: video.seek(video.position + 3000)
+    Video {
+        id: video
+        source: "file:///var/vids/28F000002.mp4"
+
+        anchors.fill: parent
+
+        autoPlay: true
+        focus: true
+
+    }
+
 }
+
+
+
+
